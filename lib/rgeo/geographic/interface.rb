@@ -249,7 +249,7 @@ module RGeo
         factory_ = Geographic::Factory.new('Projected',
           :proj4 => _proj4_4326,
           :coord_sys => _coordsys_4326,
-          :srid => 4326,
+          :srid => (opts_[:srid] || 4326),
           :wkt_parser => opts_[:wkt_parser],
           :wkb_parser => opts_[:wkb_parser],
           :wkt_generator => opts_[:wkt_generator],
