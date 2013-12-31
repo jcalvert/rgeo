@@ -71,7 +71,10 @@ module RGeo
     require 'rgeo/geos/interface'
     begin
       require 'rgeo/geos/geos_c_impl'
-    rescue ::LoadError; end
+    rescue ::LoadError => le; 
+      puts "WARNING: Failed to load Geos C Implementation: "
+      puts le.backtrace.join("/n")
+    end
     CAPI_SUPPORTED = ::RGeo::Geos.const_defined?(:CAPIGeometryMethods)
     if CAPI_SUPPORTED
       require 'rgeo/geos/capi_feature_classes'
